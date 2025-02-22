@@ -78,8 +78,11 @@
 
   show raw.where(block: true): code => {
     show raw.line: line => {
-      text(fill: gray)[#line.number]
-      h(1em)
+			context {
+        let t = text(fill: gray)[#line.number]
+        t
+        h(1em - measure(t).width)
+      }
       line.body
     }
     code
